@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  login_id: MyString
+  kanji_name: MyString
+  kana_name: MyString
+  password: MyString
+  hashed_password: MyString
+  email: MyString
+  yubin: MyString
+  jusho: MyString
+
+two:
+  login_id: MyString
+  kanji_name: MyString
+  kana_name: MyString
+  password: MyString
+  hashed_password: MyString
+  email: MyString
+  yubin: MyString
+  jusho: MyString

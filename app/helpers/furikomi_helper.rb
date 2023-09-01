@@ -1,0 +1,2 @@
+module FurikomiHelper
+end

@@ -1,0 +1,2 @@
+module FutsuYokinHelper
+end

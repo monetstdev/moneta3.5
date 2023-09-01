@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kouza: one
+  kubun: 1
+  tekiyou: MyString
+
+two:
+  kouza: two
+  kubun: 1
+  tekiyou: MyString

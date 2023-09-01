@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bank: one
+  shiten: one
+  user: one
+  kinyu_shohin: 1
+  bango: MyString
+  zandaka: 1
+
+two:
+  bank: two
+  shiten: two
+  user: two
+  kinyu_shohin: 1
+  bango: MyString
+  zandaka: 1

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bank: one
+  bango: MyString
+  kanji_name: MyString
+  kana_name: MyString
+
+two:
+  bank: two
+  bango: MyString
+  kanji_name: MyString
+  kana_name: MyString
