@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Moneta35</title>
+    <title>もねた銀行</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,7 +12,14 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <div class="flex mx-auto p-4 bg-gray-800">
+      <span>
+        <%= image_tag "money_satsutaba", class: "w-7 h-7 mr-3" %>
+      </span>
+      <span class="flex-1 text-left text-xl text-white">もねた銀行</span>
+      <span class="flex-1 text-right text-white">Login</span>
+    </div>
+    <main class="container mx-auto mt-6 px-6">
       <%= yield %>
     </main>
   </body>

@@ -1,31 +1,28 @@
 Rails.application.routes.draw do
-  get 'furikomi/select_bank'
-  get 'furikomi/set_bank'
-  get 'furikomi/select_shiten'
-  get 'furikomi/set_shiten'
-  get 'furikomi/select_saki_kouza'
-  get 'furikomi/set_saki_kouza'
-  get 'furikomi/select_moto_kouza'
-  get 'furikomi/set_moto_kouza'
-  get 'furikomi/input_kingaku'
-  get 'furikomi/set_kingaku'
-  get 'furikomi/kakunin'
-  get 'furikomi/jikkou'
-  get 'furikomi/kekka'
-  get 'futsu_yokin/new'
-  get 'futsu_yokin/create'
-  get 'futsu_yokin/kekka'
-  get 'error/show'
-  get 'meisai/index'
-  get 'user/top'
-  get 'user/login'
-  get 'user/logodd'
-  get 'user/new'
-  get 'user/create'
-  get 'user/kekka'
-  get 'user/mypage'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get "/", to: "users#top"
+  get "/top", to: "users#top"
+  post "/login", to: "users#login"
+  post "/logoff", to: "users#logoff"
+  get "/users/new", to: "users#new"
+  post "/users", to: "users#create"
+  get "/users/kekka/:user_id", to: "users#kekka"
+  get "/mypage", to: "users#mypage"
+  get "/meisai/:koza_id", to: "meisai#index"
+  get "/error/:message", to: "error#show"
+  get "/futsu_yokin/new", to: "futsu_yokin#new"
+  post "/futsu_yokin", to: "futsu_yokin#create"
+  get "/futsu_yokin/kekka", to: "futsu_yokin#kekka"
+  get "/furikomi/select_bank", to: "furikomi#select_bank"
+  post "/furikomi/set_bank", to: "furikomi#set_bank"
+  get "/furikomi/select_shiten", to: "furikomi#select_shiten"
+  post "/furikomi/set_shiten", to: "furikomi#set_shiten"
+  get "/furikomi/select_saki_kouza", to: "furikomi#select_saki_kouza"
+  post "/furikomi/set_saki_kouza", to: "furikomi#set_saki_kouza"
+  get "/furikomi/select_moto_kouza", to: "furikomi#select_moto_kouza"
+  post "/furikomi/set_moto_kouza", to: "furikomi#set_moto_kouza"
+  get "/furikomi/input_kingaku", to: "furikomi#input_kingaku"
+  post "/furikomi/set_kingaku", to: "furikomi#set_kingaku"
+  get "/furikomi/kakunin", to: "furikomi#kakunin"
+  post "/furikomi/jikkou", to: "furikomi#jikkou"
+  get "/furikomi/kekka", to: "furikomi#kekka"
 end
