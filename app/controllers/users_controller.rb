@@ -2,11 +2,12 @@ class UsersController < ApplicationController
   # GET /users/top
   def top
     # /app/views/users/top.html.erb
-    render :top 
+    render :top
   end
 
   # POST /login
   def login
+    pp params
     redirect_to :mypage
   end
 

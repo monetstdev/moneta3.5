@@ -1,11 +1,26 @@
-<div class="container relative mx-auto bg-gray-100 w-96 px-8 py-4">
-  <div class="text-4xl text-center">ログイン</div>
-  <div class="mt-4">ユーザーID</div>
-  <input type="text" class="p-1 border-gray-300 w-full">
-  <div class="mt-4">パスワード</div>
-  <input type="password" class="p-1 border-gray-300 w-full">
-  <div class="flex">
-    <div class="w-1/2 p-1 my-8 mr-4 text-xl text-center rounded bg-blue-500 text-white">ログイン</div>
-    <div class="w-1/2 p-1 my-8 ml-4 text-xl text-center rounded bg-green-500 text-white">新規ユーザー</div>
-  </div>
+<div class="container mx-auto w-96 px-8 py-4 bg-gray-100">
+  <div class="text-4xl text-center my-2">ログイン</div>
+
+  <form action="/login" method="post">
+    <label for="login_id" class="mt-4">ユーザーID</label>
+    <input type="text" name="login_id" id="login_id" class="p-1 border-gray-300 w-full">
+
+    <label for="password" class="mt-4">パスワード</label>
+    <input type="password" name="password" id="password" class="p-1 border-gray-300 w-full">
+
+    <div class="grid grid-cols-2 gap-4">
+      <input
+        type="submit"
+        value="ログイン"
+        class="cursor-pointer p-2 my-8 text-center rounded bg-blue-500 hover:bg-blue-300 text-white"
+      />
+      <a
+        href="/users/new"
+        class="cursor-pointer p-2 my-8 text-center rounded bg-green-500 hover:bg-green-300 text-white"
+      >
+        新規ユーザー
+      </a>
+    </div>
+  </form>
 </div>
+
