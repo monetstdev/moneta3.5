@@ -1,3 +1,11 @@
-<%= form_with url: "/login" do |form| %>
-  <%= form.submit "ログイン" %>
-<% end %>
+<div class="container relative mx-auto bg-gray-100 w-96 px-8 py-4">
+  <div class="text-4xl text-center">ログイン</div>
+  <div class="mt-4">ユーザーID</div>
+  <input type="text" class="p-1 border-gray-300 w-full">
+  <div class="mt-4">パスワード</div>
+  <input type="password" class="p-1 border-gray-300 w-full">
+  <div class="flex">
+    <div class="w-1/2 p-1 my-8 mr-4 text-xl text-center rounded bg-blue-500 text-white">ログイン</div>
+    <div class="w-1/2 p-1 my-8 ml-4 text-xl text-center rounded bg-green-500 text-white">新規ユーザー</div>
+  </div>
+</div>
