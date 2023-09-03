@@ -1,4 +1,24 @@
-<div>
-  <h1 class="font-bold text-4xl">Furikomi#select_bank</h1>
-  <p>Find me in app/views/furikomi/select_bank.html.erb</p>
+<div class="bg-gray-200 rounded p-8">
+  <div class="text-4xl col-span-3">振込先銀行をお選びください</div>
+</div>
+
+<div class="text-4xl mt-8">金融機関</div>
+
+<div class="mx-auto py-2">
+  <div class="grid grid-cols-3 border-t-2 border-t-gray-200">
+    <div class="font-bold p-2">金融機関番号</div>
+    <div class="font-bold p-2">名称</div>
+    <div class="font-bold p-2">選択</div>
+  </div>
+
+  <% @banks.each do |bank| %>
+    <div class="grid grid-cols-3 border-t-2 border-t-gray-200">
+      <div class="p-2"><%= bank.bangou %></div>
+      <div class="p-2"><%= bank.kanji_name %></div>
+      <form action="/furikomi/set_bank" method="post">
+        <input type="hidden" name="bank_id" value="<%= bank.id %>">
+        <input type="submit" value="選択" class="my-2 mx-4 py-1 px-2 bg-blue-500 hover:bg-blue-300 text-white text-xs text-center rounded">
+      </form>
+    </div>
+  <% end %>
 </div>

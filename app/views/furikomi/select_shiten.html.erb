@@ -1,4 +1,24 @@
-<div>
-  <h1 class="font-bold text-4xl">Furikomi#select_shiten</h1>
-  <p>Find me in app/views/furikomi/select_shiten.html.erb</p>
+<div class="bg-gray-200 rounded p-8">
+  <div class="text-4xl col-span-3">振込先支店をお選びください</div>
+</div>
+
+<div class="text-4xl mt-8">支店</div>
+
+<div class="mx-auto py-2">
+  <div class="grid grid-cols-3 border-t-2 border-t-gray-200">
+    <div class="font-bold p-2">支店番号</div>
+    <div class="font-bold p-2">名称</div>
+    <div class="font-bold p-2">選択</div>
+  </div>
+
+  <% @shitens.each do |shiten| %>
+    <div class="grid grid-cols-3 border-t-2 border-t-gray-200">
+      <div class="p-2"><%= shiten.bangou %></div>
+      <div class="p-2"><%= shiten.kanji_name %></div>
+      <form action="/furikomi/set_shiten" method="post">
+        <input type="hidden" name="shiten_id" value="<%= shiten.id %>">
+        <input type="submit" value="選択" class="my-2 mx-4 py-1 px-2 bg-blue-500 hover:bg-blue-300 text-white text-xs text-center rounded">
+      </form>
+    </div>
+  <% end %>
 </div>

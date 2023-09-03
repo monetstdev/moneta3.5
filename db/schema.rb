@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_09_01_084206) do
   create_table "banks", force: :cascade do |t|
-    t.string "bango"
+    t.string "bangou"
     t.string "kanji_name"
     t.string "kana_name"
     t.datetime "created_at", null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_084206) do
 
   create_table "shitens", force: :cascade do |t|
     t.integer "bank_id", null: false
-    t.string "bango"
+    t.string "bangou"
     t.string "kanji_name"
     t.string "kana_name"
     t.datetime "created_at", null: false

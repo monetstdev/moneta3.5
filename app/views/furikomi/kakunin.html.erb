@@ -1,4 +1,51 @@
-<div>
-  <h1 class="font-bold text-4xl">Furikomi#kakunin</h1>
-  <p>Find me in app/views/furikomi/kakunin.html.erb</p>
+<div class="bg-gray-200 rounded p-8">
+  <div class="text-4xl col-span-3">以下の内容でよろしいですか</div>
+</div>
+
+<div class="text-4xl mt-8">振込金額</div>
+<div class="text-2xl"><%= @kingaku %>円</div>
+
+<div class="text-4xl mt-8">振込先口座</div>
+
+<div class="mx-auto py-2">
+  <div class="grid grid-cols-5 border-t-2 border-gray-200">
+    <div class="font-bold p-2">銀行</div>
+    <div class="font-bold col-span-2 p-2">支店</div>
+    <div class="font-bold p-2">口座番号</div>
+    <div class="font-bold p-2">ご名義</div>
+  </div>
+
+  <div class="grid grid-cols-6 border-t-2 border-gray-200">
+    <div class="p-2"><%= @saki_kouza.bank.kanji_name %></div>
+    <div class="p-2 col-span-2"><%= @saki_kouza.shiten.kanji_name %></div>
+    <div class="p-2"><%= @saki_kouza.bangou %></div>
+    <div class="p-2"><%= @saki_kouza.user.kanji_name %></div>
+  </div>
+</div>
+
+<div class="text-4xl mt-8">振込元口座</div>
+
+<div class="mx-auto py-2">
+  <div class="grid grid-cols-5 border-t-2 border-gray-200">
+    <div class="font-bold p-2">銀行</div>
+    <div class="font-bold col-span-2 p-2">支店</div>
+    <div class="font-bold p-2">口座番号</div>
+    <div class="font-bold p-2">ご名義</div>
+  </div>
+
+  <div class="grid grid-cols-6 border-t-2 border-gray-200">
+    <div class="p-2"><%= @moto_kouza.bank.kanji_name %></div>
+    <div class="p-2 col-span-2"><%= @moto_kouza.shiten.kanji_name %></div>
+    <div class="p-2"><%= @moto_kouza.bangou %></div>
+    <div class="p-2"><%= @moto_kouza.user.kanji_name %></div>
+  </div>
+</div>
+
+<div class="grid grid-cols-4 gap-8 mt-8">
+  <form action="/furikomi/jikkou" method="post">
+    <input type="submit" value="振込実行"
+      class="py-2 px-4 bg-blue-500 hover:bg-blue-300 text-white rounded w-full"
+    >
+  </form>
+  <a href="/mypage" class="py-2 px-4 border border-gray-500 rounded w-full text-center">キャンセル</a>
 </div>

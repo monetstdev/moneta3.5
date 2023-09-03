@@ -1,8 +1,48 @@
-<div class="w-1/2 mx-auto grid grid-cols-6">
-  <div class="font-bold p-1">取引日</div>
-  <div class="font-bold p-1">金額</div>
-  <div class="font-bold p-1">区分</div>
-  <div class="font-bold p-1">適用</div>
+<div class="grid grid-cols-4 bg-gray-200 rounded p-8">
+  <div class="text-4xl col-span-3">取引明細</div>
+  <%= image_tag "money_satsutaba", class: "w-24 h-24" %>
+</div>
 
+<div class="text-4xl mt-8">普通預金</div>
 
+<div class="mx-auto py-2">
+  <div class="grid grid-cols-6 border-t-2 border-gray-200">
+    <div class="font-bold p-2">銀行</div>
+    <div class="font-bold col-span-2 p-2">支店</div>
+    <div class="font-bold p-2">口座番号</div>
+    <div class="font-bold p-2">残高</div>
+    <div class="font-bold p-2">利用可能額</div>
+  </div>
+
+  <div class="grid grid-cols-6 border-t-2 border-gray-200">
+    <div class="p-2"><%= @kouza.bank.kanji_name %></div>
+    <div class="p-2 col-span-2"><%= @kouza.shiten.kanji_name %></div>
+    <div class="p-2"><%= @kouza.bangou %></div>
+    <div class="p-2"><%= @kouza.zandaka %></div>
+    <div class="p-2"><%= @kouza.zandaka + 1000000 %></div>
+  </div>
+</div>
+
+<div class="text-4xl mt-8">明細</div>
+
+<div class="mx-auto py-2">
+  <div class="grid grid-cols-6 border-t-2 border-gray-200">
+    <div class="font-bold p-1 col-span-2">取引日</div>
+    <div class="font-bold p-1">金額</div>
+    <div class="font-bold p-1">区分</div>
+    <div class="font-bold p-1 col-span-2">適用</div>
+  </div>
+
+  <% @meisai.each do |meisai| %>
+    <div class="grid grid-cols-6 border-t-2 border-gray-200">
+      <div class="my-2 p-1 col-span-2"><%= meisai.created_at.strftime("%Y-%m-%d %H:%M") %></div>
+      <div class="my-2 p-1"><%= meisai.kingaku %></div>
+      <div class="my-2 p-1"><%= meisai.kubun == "nyuukin" ? "入金" : "出金" %></div>
+      <div class="my-2 p-1 col-span-2"><%= meisai.tekiyou %></div>
+    </div>
+  <% end %>
+</div>
+
+<div class="flex flex-row-reverse mt-2">
+  <a href="/kouza" class="px-4 py-1 bg-blue-500 hover:bg-blue-300 text-white rounded">戻る</a>
 </div>

@@ -1,4 +1,28 @@
-<div>
-  <h1 class="font-bold text-4xl">Furikomi#select_saki_kouza</h1>
-  <p>Find me in app/views/furikomi/select_saki_kouza.html.erb</p>
+<div class="bg-gray-200 rounded p-8">
+  <div class="text-4xl col-span-3">振込先口座をお選びください</div>
+</div>
+
+<div class="text-4xl mt-8">振込先口座</div>
+
+<div class="mx-auto py-2">
+  <div class="grid grid-cols-6 border-t-2 border-gray-200">
+    <div class="font-bold p-2">銀行</div>
+    <div class="font-bold col-span-2 p-2">支店</div>
+    <div class="font-bold p-2">口座番号</div>
+    <div class="font-bold p-2">宛先</div>
+    <div class="font-bold p-2"></div>
+  </div>
+
+  <% @kouzas.each do |kouza| %>
+    <div class="grid grid-cols-6 border-t-2 border-gray-200">
+      <div class="p-2"><%= kouza.bank.kanji_name %></div>
+      <div class="p-2 col-span-2"><%= kouza.shiten.kanji_name %></div>
+      <div class="p-2"><%= kouza.bangou %></div>
+      <div class="p-2"><%= kouza.user.kanji_name %></div>
+      <form action="/furikomi/set_saki_kouza" method="post">
+        <input type="hidden" name="saki_kouza_id" value="<%= kouza.id %>">
+        <input type="submit" value="選択"class="my-2 mx-4 p-1 bg-blue-500 hover:bg-blue-300 text-white text-xs text-center rounded">
+      </form>
+    </div>
+  <% end %>
 </div>

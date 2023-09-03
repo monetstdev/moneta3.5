@@ -1,4 +1,30 @@
-<div>
-  <h1 class="font-bold text-4xl">Furikomi#select_moto_kouza</h1>
-  <p>Find me in app/views/furikomi/select_moto_kouza.html.erb</p>
+<div class="bg-gray-200 rounded p-8">
+  <div class="text-4xl col-span-3">振込元口座をお選びください</div>
+</div>
+
+<div class="text-4xl mt-8">普通預金</div>
+
+<div class="mx-auto py-2">
+  <div class="grid grid-cols-7 border-t-2 border-gray-200">
+    <div class="font-bold p-2">銀行</div>
+    <div class="font-bold col-span-2 p-2">支店</div>
+    <div class="font-bold p-2">口座番号</div>
+    <div class="font-bold p-2">残高</div>
+    <div class="font-bold p-2">利用可能額</div>
+    <div class="font-bold p-2"></div>
+  </div>
+
+  <% @kouza.each do |kouza| %>
+    <div class="grid grid-cols-7 border-t-2 border-gray-200">
+      <div class="p-2"><%= kouza.bank.kanji_name %></div>
+      <div class="p-2 col-span-2"><%= kouza.shiten.kanji_name %></div>
+      <div class="p-2"><%= kouza.bangou %></div>
+      <div class="p-2"><%= kouza.zandaka %></div>
+      <div class="p-2"><%= kouza.zandaka + 1000000 %></div>
+      <form action="/furikomi/set_moto_kouza" method="post">
+        <input type="hidden" name="moto_kouza_id" value="<%= kouza.id %>">
+        <input type="submit" value="選択" class="my-2 mx-4 py-1 px-2 bg-blue-500 hover:bg-blue-300 text-white text-xs text-center rounded">
+      </form>
+    </div>
+  <% end %>
 </div>
