@@ -1,5 +1,7 @@
+require "digest"
+
 class UsersController < ApplicationController
-  # GET /users/top
+  # GET /top
   def top
     # /app/views/users/top.html.erb
     render :top
@@ -7,13 +9,37 @@ class UsersController < ApplicationController
 
   # POST /login
   def login
-    pp params
+    login_id = params[:login_id]
+    password = params[:password]
+
+    user = User.find_by(login_id: login_id)
+    if user.nil?
+      @error = [
+        "ユーザーIDが違います"
+      ]
+      render :top
+      return
+    end
+
+    if user.hashed_password != Digest::MD5.hexdigest(password)
+      @error = [
+        "パスワードが違います"
+      ]
+      render :top
+      return
+    end
+
+    cookies[:user_id] = user.id
     redirect_to :mypage
   end
 
   # POST /logoff
   def logoff
-    redirect_to :users_top
+    cookies[:user_id] = nil
+    @message = [
+      "ご利用ありがとうございました"
+    ]
+    redirect_to :top
   end
 
   # GET /users/new
@@ -35,6 +61,25 @@ class UsersController < ApplicationController
 
   # GET /users/mypage
   def mypage
+    user_id = cookies[:user_id]
+    if user_id.nil?
+      @error = [
+        "不正なリクエストです"
+      ]
+      render :top
+      return
+    end
+
+    @user = User.find(user_id)
+    if @user.nil?
+      @error = [
+        "不正なリクエストです"
+      ]
+      cookies[:user_id] = nil
+      render :top
+      return
+    end
+
     # /app/views/users/mypage.html.erb
     render :mypage
   end

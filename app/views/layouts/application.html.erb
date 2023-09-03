@@ -12,14 +12,32 @@
   </head>
 
   <body>
+    <!-- ナビゲーションバー -->
     <div class="flex p-4 bg-gray-800">
       <span class="flex-none mr-3">
         <%= image_tag "money_satsutaba", class: "w-7 h-7" %>
       </span>
       <span class="flex-none text-xl text-white">もねた銀行</span>
-      <span class="flex-1 text-right text-white">Login</span>
+
+      <% if @user %>
+        <!-- ログインしているならログオフボタン -->
+        <a href="/logoff" class="flex-1 text-right text-white">Logoff</a>
+      <% else %>
+        <!-- ログインしていないならログオンボタン -->
+        <a href="/logon" class="flex-1 text-right text-white">Logon</a>
+      <% end %>
     </div>
+    <!-- コンテンツ -->
     <main class="container mx-auto mt-6 px-6">
+      <!-- エラーメッセージ -->
+      <% @error.each do |error| %>
+        <div class="bg-red-200 text-red-700 p-2 m-2"><%= error %></div>
+      <% end %>
+      <!-- お知らせ -->
+      <% @message.each do |message| %>
+        <div class="bg-green-200 text-green-700 p-2 m-2"><%= message %></div>
+      <% end %>
+      <!-- 本文 -->
       <%= yield %>
     </main>
   </body>
