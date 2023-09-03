@@ -3,36 +3,33 @@
     <div class="text-6xl font-bold mt-12 ml-8"><%= @user.kanji_name %>様</div>
     <div class="text-2xl mt-2 mb-12 ml-8">いつもご利用ありがとうございます</div>
   </div>
-  <div class="col-span-2 bg-yellow">
+  <div class="col-span-2">
     <%= image_tag "logo_mo", class: "p-12" %>
   </div>
 </div>
 
-<div class="grid gap-6 grid-cols-6 mt-8">
-  <div class="col-span-2 border border-gray-300 rounded p-4">
-    <div class="text-3xl">入出金明細</div>
-    <% link_to "お手続きへ", class: "bg-blue-500 text-white rounded ml-2 mr-12 mt-12 mb-2 p-2" %>
-    <div class=>お手続きへ</div>
-
+<div class="grid gap-6 grid-cols-3 mt-8">
+  <div class="flex flex-col border border-gray-300 rounded p-4">
+    <div class="flex-none text-2xl">入出金明細</div>
+    <div class="flex-glow my-4"></div>
+    <a href="/kouza" class="flex-none bg-blue-500 hover:bg-blue-300 text-white rounded my-2 p-2">お手続きへ</a>
   </div>
-  <div class="col-span-2 border border-gray-300 rounded p-4">
-    <div class="text-3xl">振込</div>
-    <div class="bg-blue-500 text-white rounded ml-2 mr-12 mt-12 mb-2 p-2">お手続きへ</div>
 
+  <div class="flex flex-col border border-gray-300 rounded p-4">
+    <div class="flex-none text-2xl">口座開設</div>
+    <div class="flex-glow my-4"></div>
+    <a href="/futsu_yokin/new" class="flex-none bg-blue-500 hover:bg-blue-300 text-white rounded my-2 p-2">お手続きへ</a>
   </div>
-  <div class="col-span-2 border border-gray-300 rounded p-4">
-    <div class="text-3xl">定期預金</div>
-    <div class="bg-blue-500 text-white rounded ml-2 mr-12 mt-12 mb-2 p-2">お手続きへ</div>
 
+  <div class="flex flex-col border border-gray-300 rounded p-4">
+    <div class="flex-none text-2xl">振込</div>
+    <div class="flex-glow my-4"></div>
+    <a href="/furikomi/bank_select" class="flex-none bg-blue-500 hover:bg-blue-300 text-white rounded my-2 p-2">お手続きへ</a>
   </div>
-  <div class="col-span-2 border border-gray-300 rounded p-4">
-    <div class="text-3xl">外貨預金</div>
-    <div class="bg-blue-500 text-white rounded ml-2 mr-12 mt-12 mb-2 p-2">お手続きへ</div>
 
-  </div>
-  <div class="col-span-2 border border-gray-300 rounded p-4">
-    <div class="text-3xl">投資信託</div>
-    <div class="bg-blue-500 text-white rounded ml-2 mr-12 mt-12 mb-2 p-2">お手続きへ</div>
-
+  <div class="flex flex-col border border-gray-300 rounded p-4">
+    <div class="flex-none text-2xl">ローン</div>
+    <div class="flex-glow my-4"></div>
+    <a href="/loan/new" class="flex-none bg-blue-500 hover:bg-blue-300 text-white rounded my-2 p-2">お手続きへ</a>
   </div>
 </div>

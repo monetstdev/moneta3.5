@@ -1,4 +1,29 @@
-<div>
-  <h1 class="font-bold text-4xl">User#new</h1>
-  <p>Find me in app/views/user/new.html.erb</p>
+<div class="container-md mx-auto mt-8 py-4 px-8 bg-gray-100">
+  <div class="text-4xl text-center my-2">お客様情報の入力</div>
+
+  <form action="/users" method="post">
+    <label for="login_id" class="mt-4">ユーザーID</label>
+    <input type="text" name="login_id" id="login_id" value="<%= @login_id %>" class="p-1 border-gray-300 w-full">
+
+    <label for="password" class="mt-4">パスワード</label>
+    <input type="password" name="password" id="password" value="<%= @password %>" class="p-1 border-gray-300 w-full">
+
+    <label for="kanji_name" class="mt-4">漢字氏名</label>
+    <input type="text" name="kanji_name" id="kanji_name" value="<%= @kanji_name %>" class="p-1 border-gray-300 w-full">
+
+    <label for="kana_name" class="mt-4">かな氏名</label>
+    <input type="text" name="kana_name" id="kana_name" value="<%= @kana_name %>" class="p-1 border-gray-300 w-full">
+
+    <label for="email" class="mt-4">電子メール</label>
+    <input type="text" name="email" id="email" value="<%= @email %>" class="p-1 border-gray-300 w-full">
+
+    <label for="yubin" class="mt-4">郵便番号</label>
+    <input type="text" name="yubin" id="yubin" value="<%= @yubin %>" class="p-1 border-gray-300 w-full">
+
+    <label for="jyusho" class="mt-4">住所</label>
+    <input type="text" name="jyusho" id="jyusho" value="<%= @jyusho %>" class="p-1 border-gray-300 w-full">
+
+    <input type="submit" value="ユーザー登録" class="cursor-pointer p-2 my-8 text-center rounded bg-blue-500 hover:bg-blue-300 text-white">
+  </form>
 </div>
+

@@ -5,7 +5,7 @@ class CreateKouzas < ActiveRecord::Migration[7.0]
       t.references :shiten, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.integer :kinyu_shohin, default: 0
-      t.string :bango
+      t.string :bangou
       t.integer :zandaka
 
       t.timestamps

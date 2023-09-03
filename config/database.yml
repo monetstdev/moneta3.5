@@ -1,5 +1,5 @@
 default: &default
-  adapter: selite3
+  adapter: sqlite3
   pool: 5
   timeout: 5000
   database: db/moneta.sqlite3

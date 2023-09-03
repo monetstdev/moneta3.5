@@ -1,4 +1,27 @@
-<div>
-  <h1 class="font-bold text-4xl">User#kekka</h1>
-  <p>Find me in app/views/user/kekka.html.erb</p>
+<div class="container-md mx-auto mt-4 p-4">
+  <div class="text-4xl">お客様情報を登録しました</div>
+  <div class="grid grid-cols-3 my-4">
+
+    <div class="col-span-1 p-2">ログインID</div>  
+    <div class="col-span-2 p-2"><%= @user.login_id %></div>  
+
+    <div class="col-span-1 p-2">漢字氏名</div>  
+    <div class="col-span-2 p-2"><%= @user.kanji_name %></div>  
+
+    <div class="col-span-1 p-2">かな氏名</div>  
+    <div class="col-span-2 p-2"><%= @user.kana_name %></div>  
+
+    <div class="col-span-1 p-2">電子メール</div>  
+    <div class="col-span-2 p-2"><%= @user.email %></div>  
+
+    <div class="col-span-1 p-2">郵便番号</div>  
+    <div class="col-span-2 p-2"><%= @user.yubin %></div>  
+
+    <div class="col-span-1 p-2">住所</div>  
+    <div class="col-span-2 p-2"><%= @user.jusho %></div>  
+  </div>
+
+  <a href="/top" class="bg-blue-500 hover:bg-blue-300 text-white rounded p-2 my-8">
+    ログインページへ
+  </a>
 </div>

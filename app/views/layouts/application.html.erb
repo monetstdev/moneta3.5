@@ -24,19 +24,21 @@
         <a href="/logoff" class="flex-1 text-right text-white">Logoff</a>
       <% else %>
         <!-- ログインしていないならログオンボタン -->
-        <a href="/logon" class="flex-1 text-right text-white">Logon</a>
+        <a href="/top" class="flex-1 text-right text-white">Logon</a>
       <% end %>
     </div>
     <!-- コンテンツ -->
-    <main class="container mx-auto mt-6 px-6">
-      <!-- エラーメッセージ -->
-      <% @error.each do |error| %>
-        <div class="bg-red-200 text-red-700 p-2 m-2"><%= error %></div>
+    <main class="md:container md:mx-auto mt-4 px-6">
+
+      <!-- フラッシュメッセージ -->
+      <% flash.each do |type, msg| %>
+        <% if type == "alert" %>
+          <div class="bg-red-200 text-red-700 p-2 m-2 rounded"><%= msg %></div>
+        <% else %>
+          <div class="bg-green-200 text-green-700 p-2 m-2 rounded"><%= msg %></div>
+        <% end %>
       <% end %>
-      <!-- お知らせ -->
-      <% @message.each do |message| %>
-        <div class="bg-green-200 text-green-700 p-2 m-2"><%= message %></div>
-      <% end %>
+
       <!-- 本文 -->
       <%= yield %>
     </main>

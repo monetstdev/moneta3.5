@@ -1,4 +1,17 @@
-<div>
-  <h1 class="font-bold text-4xl">FutsuYokin#new</h1>
-  <p>Find me in app/views/futsu_yokin/new.html.erb</p>
+<div class="container mx-auto mt-8 py-4 px-8 bg-gray-100 w-96 rounded">
+  <div class="text-4xl text-center my-2">新規普通預金</div>
+
+  <form action="/futsu_yokin" method="post">
+    <label for="shiten">お取引店舗</label>
+    <select name="shiten_id" id="shiten" class="p-1 border-gray-300 w-full">
+      <% @shitens.each do |shiten| %>
+        <option value="<%= shiten.id %>"><%= shiten.kanji_name %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="開設する" class="cursor-pointer p-2 my-8 text-center rounded bg-blue-500 hover:bg-blue-300 text-white">
+  </form>
+
+  <p class="text-sm mt-8">
+    預入金額０円で開設します。100万円まで貸越することができます。貸越が発生する都度5%の利息が発生します。
+  </p>
 </div>

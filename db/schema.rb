@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_084206) do
     t.integer "shiten_id", null: false
     t.integer "user_id", null: false
     t.integer "kinyu_shohin", default: 0
-    t.string "bango"
+    t.string "bangou"
     t.integer "zandaka"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,16 +54,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_084206) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "bank_id", null: false
     t.string "login_id"
     t.string "kanji_name"
     t.string "kana_name"
-    t.string "password"
     t.string "hashed_password"
     t.string "email"
     t.string "yubin"
     t.string "jusho"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bank_id"], name: "index_users_on_bank_id"
   end
 
   add_foreign_key "kouzas", "banks"
@@ -71,4 +72,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_084206) do
   add_foreign_key "kouzas", "users"
   add_foreign_key "meisais", "kouzas"
   add_foreign_key "shitens", "banks"
+  add_foreign_key "users", "banks"
 end

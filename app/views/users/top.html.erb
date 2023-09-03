@@ -1,12 +1,12 @@
-<div class="container mx-auto w-96 px-8 py-4 bg-gray-100">
+<div class="container mx-auto w-96 mt-8 px-8 py-4 bg-gray-100">
   <div class="text-4xl text-center my-2">ログイン</div>
 
   <form action="/login" method="post">
     <label for="login_id" class="mt-4">ユーザーID</label>
-    <input type="text" name="login_id" id="login_id" class="p-1 border-gray-300 w-full">
+    <input type="text" name="login_id" id="login_id" value="<%= @login_id %>" class="p-1 border-gray-300 w-full">
 
     <label for="password" class="mt-4">パスワード</label>
-    <input type="password" name="password" id="password" class="p-1 border-gray-300 w-full">
+    <input type="password" name="password" id="password" value="<%= @password %>" class="p-1 border-gray-300 w-full">
 
     <div class="grid grid-cols-2 gap-4">
       <input

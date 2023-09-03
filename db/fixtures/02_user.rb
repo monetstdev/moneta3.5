@@ -11,11 +11,11 @@ users = [
     jusho: "東京都目黒区目黒１−１−１",
   },
   {
-    login_id: "aoyagi",
-    kanji_name: "青柳次郎",
-    kana_name: "あおやぎじろう",
+    login_id: "aoki",
+    kanji_name: "青木次郎",
+    kana_name: "あおきじろう",
     hashed_password: Digest::MD5.hexdigest("5678"),
-    email: "aoyagi@moneta.com",
+    email: "aoki@moneta.com",
     yubin: "200",
     jusho: "東京都目黒区目黒２−２−２",
   },
@@ -24,6 +24,7 @@ users = [
 users.each_with_index do |user, id|
   User.seed do |s|
     s.id = id + 1
+    s.bank_id = 1
     s.login_id = user[:login_id]
     s.kanji_name = user[:kanji_name]
     s.kana_name = user[:kana_name]
