@@ -4,6 +4,7 @@ class CreateMeisais < ActiveRecord::Migration[7.0]
       t.references :kouza, null: false, foreign_key: true
       t.integer :kubun, default: 0
       t.integer :kingaku
+      t.integer :zandaka
       t.string :tekiyou
 
       t.timestamps

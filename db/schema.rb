@@ -11,25 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_09_01_084206) do
-  create_table "banks", force: :cascade do |t|
-    t.string "bangou"
-    t.string "kanji_name"
-    t.string "kana_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "kouzas", force: :cascade do |t|
-    t.integer "bank_id", null: false
-    t.integer "shiten_id", null: false
+    t.string "bank_bangou"
+    t.string "shiten_bangou"
     t.integer "user_id", null: false
     t.integer "kinyu_shohin", default: 0
     t.string "bangou"
     t.integer "zandaka"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bank_id"], name: "index_kouzas_on_bank_id"
-    t.index ["shiten_id"], name: "index_kouzas_on_shiten_id"
     t.index ["user_id"], name: "index_kouzas_on_user_id"
   end
 
@@ -37,24 +27,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_084206) do
     t.integer "kouza_id", null: false
     t.integer "kubun", default: 0
     t.integer "kingaku"
+    t.integer "zandaka"
     t.string "tekiyou"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["kouza_id"], name: "index_meisais_on_kouza_id"
   end
 
-  create_table "shitens", force: :cascade do |t|
-    t.integer "bank_id", null: false
-    t.string "bangou"
-    t.string "kanji_name"
-    t.string "kana_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bank_id"], name: "index_shitens_on_bank_id"
-  end
-
   create_table "users", force: :cascade do |t|
-    t.integer "bank_id", null: false
+    t.string "bank_bangou"
     t.string "login_id"
     t.string "kanji_name"
     t.string "kana_name"
@@ -64,13 +45,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_084206) do
     t.string "jusho"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bank_id"], name: "index_users_on_bank_id"
   end
 
-  add_foreign_key "kouzas", "banks"
-  add_foreign_key "kouzas", "shitens"
   add_foreign_key "kouzas", "users"
   add_foreign_key "meisais", "kouzas"
-  add_foreign_key "shitens", "banks"
-  add_foreign_key "users", "banks"
 end

@@ -5,15 +5,17 @@ class UsersController < ApplicationController
   def top
     @login_id = session[:login_id]
     @password = session[:password]
+
     # /app/views/users/top.html.erb
     render :top
   end
-  
+
   # POST /login
   def login
     login_id = params[:login_id]
     password = params[:password]
     user = User.find_by(login_id: login_id)
+
     if user != nil && user.hashed_password == Digest::MD5.hexdigest(password)
       session[:login_id] = nil
       session[:password] = nil
@@ -58,7 +60,7 @@ class UsersController < ApplicationController
     email = params[:email]
     yubin = params[:yubin]
     jusho = params[:jusho]
-    
+
     error_msg = is_user_valid?(
       login_id,
       password,
@@ -70,9 +72,8 @@ class UsersController < ApplicationController
     )
 
     if error_msg.empty?
-      my_bank = Bank.find_by(kanji_name: "もねた銀行")
       user = User.create!(
-        bank_id: my_bank.id,
+        bank_bangou: "1000",
         login_id: login_id,
         hashed_password: Digest::MD5.hexdigest(password),
         kanji_name: kanji_name,

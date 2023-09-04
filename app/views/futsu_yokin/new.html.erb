@@ -3,9 +3,9 @@
 
   <form action="/futsu_yokin" method="post">
     <label for="shiten">お取引店舗</label>
-    <select name="shiten_id" id="shiten" class="p-1 border-gray-300 w-full">
-      <% @shitens.each do |shiten| %>
-        <option value="<%= shiten.id %>"><%= shiten.kanji_name %></option>
+    <select name="shiten_bangou" id="shiten" class="p-1 border-gray-300 w-full">
+      <% @shitens.each do |shiten_bangou, shiten| %>
+        <option value="<%= shiten_bangou %>"><%= shiten["kanji_name"] %></option>
       <% end %>
     </select>
     <input type="submit" value="開設する" class="cursor-pointer p-2 my-8 text-center rounded bg-blue-500 hover:bg-blue-300 text-white">

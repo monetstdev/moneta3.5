@@ -1,28 +1,29 @@
 class FutsuYokinController < ApplicationController
   def new
-    @user = User.find(session[:user_id])
-    @bank = Bank.find(@user.bank_id)
-    @shitens = @bank.shitens
+    user = User.find(session[:user_id])
+    @shitens = Shiten.select do |shiten_ganbou, shiten|
+      shiten["bank_bangou"] == user.bank_bangou
+    end
   end
-  
+
   def create
     @user = User.find(session[:user_id])
-    @bank = Bank.find(@user.bank_id)
 
-    shiten_id = params[:shiten_id]
+    shiten_bangou = params[:shiten_bangou]
     kouza = Kouza.create!(
-      bank_id: @bank.id,
-      shiten_id: shiten_id,
+      bank_bangou: "1000",
+      shiten_bangou: shiten_bangou,
       user_id: @user.id,
       kinyu_shohin: :futsu_yokin,
       zandaka: 0,
-      bangou: random_kouza_bangou()
+      bangou: random_kouza_bangou(),
     )
 
     kouza.meisai.create!(
       kubun: :nyuukin,
       kingaku: 0,
-      tekiyou: "新規開設"
+      zandaka: 0,
+      tekiyou: "新規開設",
     )
 
     redirect_to "/futsu_yokin/kekka/#{kouza.id}"
@@ -35,6 +36,6 @@ class FutsuYokinController < ApplicationController
   def kekka
     kouza_id = params[:kouza_id]
     @kouza = Kouza.find(kouza_id)
-    render :kekka 
+    render :kekka
   end
 end

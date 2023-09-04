@@ -15,8 +15,8 @@
 
   <% @kouzas.each do |kouza| %>
     <div class="grid grid-cols-6 border-t-2 border-gray-200">
-      <div class="p-2"><%= kouza.bank.kanji_name %></div>
-      <div class="p-2 col-span-2"><%= kouza.shiten.kanji_name %></div>
+      <div class="p-2"><%= Bank[kouza.bank_bangou]["kanji_name"] %></div>
+      <div class="p-2 col-span-2"><%= Shiten[kouza.shiten_bangou]["kanji_name"] %></div>
       <div class="p-2"><%= kouza.bangou %></div>
       <div class="p-2"><%= kouza.user.kanji_name %></div>
       <form action="/furikomi/set_saki_kouza" method="post">

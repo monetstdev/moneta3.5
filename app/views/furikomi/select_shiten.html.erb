@@ -11,12 +11,12 @@
     <div class="font-bold p-2">選択</div>
   </div>
 
-  <% @shitens.each do |shiten| %>
+  <% @shitens.each do |shiten_bangou, shiten| %>
     <div class="grid grid-cols-3 border-t-2 border-t-gray-200">
-      <div class="p-2"><%= shiten.bangou %></div>
-      <div class="p-2"><%= shiten.kanji_name %></div>
+      <div class="p-2"><%= shiten_bangou %></div>
+      <div class="p-2"><%= shiten["kanji_name"] %></div>
       <form action="/furikomi/set_shiten" method="post">
-        <input type="hidden" name="shiten_id" value="<%= shiten.id %>">
+        <input type="hidden" name="shiten_bangou" value="<%= shiten_bangou %>">
         <input type="submit" value="選択" class="my-2 mx-4 py-1 px-2 bg-blue-500 hover:bg-blue-300 text-white text-xs text-center rounded">
       </form>
     </div>

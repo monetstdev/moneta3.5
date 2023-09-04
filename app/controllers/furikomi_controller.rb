@@ -14,32 +14,31 @@ class FurikomiController < ApplicationController
 
   # GET /furikomi/select_bank
   def select_bank
-    @banks = Bank.all
     render :select_bank
   end
 
   # POST /furikomi/set_bank
   def set_bank
-    session[:bank_id] = params[:bank_id]
+    session[:bank_bangou] = params[:bank_bangou]
     redirect_to "/furikomi/select_shiten"
   end
 
   # GET /furikomi/select_shiten
   def select_shiten
-    @bank = Bank.find(session[:bank_id])
-    @shitens = @bank.shitens
+    @shitens = Shiten.select do |shiten_bango, shiten|
+      shiten["bank_bangou"] == session[:bank_bangou]
+    end
   end
 
   # POST /furikomi/set_shiten
   def set_shiten
-    session[:shiten_id] = params[:shiten_id]
+    session[:shiten_bangou] = params[:shiten_bangou]
     redirect_to "/furikomi/select_saki_kouza"
   end
 
   # GET /furikomi/select_saki_kouza
   def select_saki_kouza
-    @shiten = Shiten.find(session[:shiten_id])
-    @kouzas = Kouza.where(shiten_id: @shiten.id)
+    @kouzas = Kouza.where(shiten_bangou: session[:shiten_bangou])
     render :select_saki_kouza
   end
 
@@ -85,6 +84,7 @@ class FurikomiController < ApplicationController
       @moto_kouza.meisai.create(
         kubun: :syukkin,
         kingaku: @kingaku,
+        zandaka: zandaka - @kingaku,
         tekiyou: "#{@saki_kouza.user.kanji_name}への振込",
       )
 
@@ -93,6 +93,7 @@ class FurikomiController < ApplicationController
         @moto_kouza.meisai.create(
           kubun: :syukkin,
           kingaku: -@moto_kouza.zandaka / 20,
+          zandaka: @moto_kouza.zandaka * 19 / 20,
           tekiyou: "貸越利息",
         )
         @moto_kouza.update(zandaka: @moto_kouza.zandaka * 19 / 20)
@@ -103,6 +104,7 @@ class FurikomiController < ApplicationController
       @saki_kouza.meisai.create(
         kubun: :nyuukin,
         kingaku: @kingaku,
+        zandaka: @saki_kouza.zandaka,
         tekiyou: "#{@moto_kouza.user.kanji_name}からの振込",
       )
 

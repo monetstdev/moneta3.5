@@ -4,7 +4,6 @@ one:
   login_id: MyString
   kanji_name: MyString
   kana_name: MyString
-  password: MyString
   hashed_password: MyString
   email: MyString
   yubin: MyString
@@ -14,7 +13,6 @@ two:
   login_id: MyString
   kanji_name: MyString
   kana_name: MyString
-  password: MyString
   hashed_password: MyString
   email: MyString
   yubin: MyString

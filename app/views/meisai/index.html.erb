@@ -15,11 +15,11 @@
   </div>
 
   <div class="grid grid-cols-6 border-t-2 border-gray-200">
-    <div class="p-2"><%= @kouza.bank.kanji_name %></div>
-    <div class="p-2 col-span-2"><%= @kouza.shiten.kanji_name %></div>
+    <div class="p-2"><%= Bank[@kouza.bank_bangou]["kanji_name"] %></div>
+    <div class="p-2 col-span-2"><%= Shiten[@kouza.shiten_bangou]["kanji_name"] %></div>
     <div class="p-2"><%= @kouza.bangou %></div>
-    <div class="p-2"><%= @kouza.zandaka %></div>
-    <div class="p-2"><%= @kouza.zandaka + 1000000 %></div>
+    <div class="p-2"><%= number_to_currency(@kouza.zandaka, unit: "￥", strip_insignificant_zeros: true) %></div>
+    <div class="p-2"><%= number_to_currency(@kouza.zandaka + 1000000, unit: "￥", strip_insignificant_zeros: true) %></div>
   </div>
 </div>
 
@@ -36,7 +36,7 @@
   <% @meisai.each do |meisai| %>
     <div class="grid grid-cols-6 border-t-2 border-gray-200">
       <div class="my-2 p-1 col-span-2"><%= meisai.created_at.strftime("%Y-%m-%d %H:%M") %></div>
-      <div class="my-2 p-1"><%= meisai.kingaku %></div>
+      <div class="my-2 p-1"><%= number_to_currency(meisai.kingaku, unit: "￥", strip_insignificant_zeros: true) %></div>
       <div class="my-2 p-1"><%= meisai.kubun == "nyuukin" ? "入金" : "出金" %></div>
       <div class="my-2 p-1 col-span-2"><%= meisai.tekiyou %></div>
     </div>

@@ -1,21 +1,21 @@
-<div class="container-md mx-auto mt-4 p-4">
+<div class="container mx-auto mt-4 p-4">
   <div class="text-4xl">普通預金を開設しました</div>
   <div class="grid grid-cols-3 my-4">
 
-    <div class="col-span-1 p-2">銀行名</div>  
-    <div class="col-span-2 p-2"><%= @kouza.bank.kanji_name %></div>  
+    <div class="col-span-1 p-2">銀行名</div>
+    <div class="col-span-2 p-2"><%= Bank[@kouza.bank_bangou]["kanji_name"] %></div>
 
-    <div class="col-span-1 p-2">支店名</div>  
-    <div class="col-span-2 p-2"><%= @kouza.shiten.kanji_name %></div>  
+    <div class="col-span-1 p-2">支店名</div>
+    <div class="col-span-2 p-2"><%= Shiten[@kouza.shiten_bangou]["kanji_name"] %></div>
 
-    <div class="col-span-1 p-2">口座番号</div>  
-    <div class="col-span-2 p-2"><%= @kouza.bangou %></div>  
+    <div class="col-span-1 p-2">口座番号</div>
+    <div class="col-span-2 p-2"><%= @kouza.bangou %></div>
 
-    <div class="col-span-1 p-2">残高</div>  
-    <div class="col-span-2 p-2"><%= @kouza.zandaka %></div>  
+    <div class="col-span-1 p-2">残高</div>
+    <div class="col-span-2 p-2"><%= number_to_currency(@kouza.zandaka, unit: "￥", strip_insignificant_zeros: true) %></div>
 
-    <div class="col-span-1 p-2">貸越可能金額</div>  
-    <div class="col-span-2 p-2"><%= @kouza.zandaka + 1000000 %></div>  
+    <div class="col-span-1 p-2">貸越可能金額</div>
+    <div class="col-span-2 p-2"><%= number_to_currency(@kouza.zandaka + 1000000, unit: "￥", strip_insignificant_zeros: true) %></div>
   </div>
 
   <a href="/mypage" class="bg-blue-500 hover:bg-blue-300 text-white rounded p-2 my-8">
