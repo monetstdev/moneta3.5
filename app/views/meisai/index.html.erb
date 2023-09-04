@@ -27,17 +27,19 @@
 
 <div class="mx-auto py-2">
   <div class="grid grid-cols-6 border-t-2 border-gray-200">
-    <div class="font-bold p-1 col-span-2">取引日</div>
-    <div class="font-bold p-1">金額</div>
+    <div class="font-bold p-1">取引日</div>
     <div class="font-bold p-1">区分</div>
+    <div class="font-bold p-1">金額</div>
+    <div class="font-bold p-1">差引残高</div>
     <div class="font-bold p-1 col-span-2">適用</div>
   </div>
 
   <% @meisai.each do |meisai| %>
     <div class="grid grid-cols-6 border-t-2 border-gray-200">
-      <div class="my-2 p-1 col-span-2"><%= meisai.created_at.strftime("%Y-%m-%d %H:%M") %></div>
-      <div class="my-2 p-1"><%= number_to_currency(meisai.kingaku, unit: "￥", strip_insignificant_zeros: true) %></div>
+      <div class="my-2 p-1"><%= meisai.created_at.strftime("%Y-%m-%d") %></div>
       <div class="my-2 p-1"><%= meisai.kubun == "nyuukin" ? "入金" : "出金" %></div>
+      <div class="my-2 p-1"><%= number_to_currency(meisai.kingaku, unit: "￥", strip_insignificant_zeros: true) %></div>
+      <div class="my-2 p-1"><%= number_to_currency(meisai.zandaka, unit: "￥", strip_insignificant_zeros: true) %></div>
       <div class="my-2 p-1 col-span-2"><%= meisai.tekiyou %></div>
     </div>
   <% end %>

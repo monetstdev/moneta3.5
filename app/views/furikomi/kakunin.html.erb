@@ -8,16 +8,16 @@
 <div class="text-4xl mt-8">振込先口座</div>
 
 <div class="mx-auto py-2">
-  <div class="grid grid-cols-5 border-t-2 border-gray-200">
+  <div class="grid grid-cols-4 border-t-2 border-gray-200">
     <div class="font-bold p-2">銀行</div>
-    <div class="font-bold col-span-2 p-2">支店</div>
+    <div class="font-bold p-2">支店</div>
     <div class="font-bold p-2">口座番号</div>
     <div class="font-bold p-2">ご名義</div>
   </div>
 
-  <div class="grid grid-cols-6 border-t-2 border-gray-200">
+  <div class="grid grid-cols-4 border-t-2 border-gray-200">
     <div class="p-2"><%= Bank[@saki_kouza.bank_bangou]["kanji_name"] %></div>
-    <div class="p-2 col-span-2"><%= Shiten[@saki_kouza.shiten_bangou]["kanji_name"] %></div>
+    <div class="p-2"><%= Shiten[@saki_kouza.shiten_bangou]["kanji_name"] %></div>
     <div class="p-2"><%= @saki_kouza.bangou %></div>
     <div class="p-2"><%= @saki_kouza.user.kanji_name %></div>
   </div>
@@ -26,18 +26,18 @@
 <div class="text-4xl mt-8">振込元口座</div>
 
 <div class="mx-auto py-2">
-  <div class="grid grid-cols-5 border-t-2 border-gray-200">
+  <div class="grid grid-cols-4 border-t-2 border-gray-200">
     <div class="font-bold p-2">銀行</div>
-    <div class="font-bold col-span-2 p-2">支店</div>
+    <div class="font-bold p-2">支店</div>
     <div class="font-bold p-2">口座番号</div>
-    <div class="font-bold p-2">ご名義</div>
+    <div class="font-bold p-2">残高</div>
   </div>
 
-  <div class="grid grid-cols-6 border-t-2 border-gray-200">
+  <div class="grid grid-cols-4 border-t-2 border-gray-200">
     <div class="p-2"><%= Bank[@moto_kouza.bank_bangou]["kanji_name"] %></div>
-    <div class="p-2 col-span-2"><%= Shiten[@moto_kouza.shiten_bangou]["kanji_name"] %></div>
+    <div class="p-2"><%= Shiten[@moto_kouza.shiten_bangou]["kanji_name"] %></div>
     <div class="p-2"><%= @moto_kouza.bangou %></div>
-    <div class="p-2"><%= @moto_kouza.user.kanji_name %></div>
+    <div class="p-2"><%= number_to_currency(@moto_kouza.zandaka, unit: "￥", strip_insignificant_zeros: true) %></div>
   </div>
 </div>
 

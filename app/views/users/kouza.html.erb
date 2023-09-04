@@ -6,9 +6,9 @@
 <div class="text-4xl mt-8">普通預金</div>
 
 <div class="mx-auto py-2">
-  <div class="grid grid-cols-7 border-t-2 border-gray-200">
+  <div class="grid grid-cols-6 border-t-2 border-gray-200">
     <div class="font-bold p-2">銀行</div>
-    <div class="font-bold col-span-2 p-2">支店</div>
+    <div class="font-bold p-2">支店</div>
     <div class="font-bold p-2">口座番号</div>
     <div class="font-bold p-2">残高</div>
     <div class="font-bold p-2">利用可能額</div>
@@ -16,13 +16,13 @@
   </div>
 
   <% @kouza.each do |kouza| %>
-    <div class="grid grid-cols-7 border-t-2 border-gray-200">
+    <div class="grid grid-cols-6 border-t-2 border-gray-200">
       <div class="p-2"><%= Bank[kouza.bank_bangou]["kanji_name"] %></div>
-      <div class="p-2 col-span-2"><%= Shiten[kouza.shiten_bangou]["kanji_name"] %></div>
+      <div class="p-2"><%= Shiten[kouza.shiten_bangou]["kanji_name"] %></div>
       <div class="p-2"><%= kouza.bangou %></div>
       <div class="p-2"><%= number_to_currency(kouza.zandaka, unit: "￥", strip_insignificant_zeros: true) %></div>
       <div class="p-2"><%= number_to_currency(kouza.zandaka + 1000000, unit: "￥", strip_insignificant_zeros: true) %></div>
-      <a href="/meisai/<%= kouza.id %>" class="my-2 mx-4 p-1 bg-blue-500 hover:bg-blue-300 text-white text-xs text-center rounded">照会</a>
+      <a href="/meisai/<%= kouza.id %>" class="my-2 mx-8 p-1 bg-blue-500 hover:bg-blue-300 text-white text-xs text-center rounded">照会</a>
     </div>
   <% end %>
 </div>

@@ -74,17 +74,16 @@ class FurikomiController < ApplicationController
     @kingaku = session[:kingaku].to_i
 
     # 残高不足
-    zandaka = @moto_kouza.zandaka
-    if zandaka + 1000000 < @kingaku
+    if @moto_kouza.zandaka + 1000000 < @kingaku
       flash[:alert] = "残高が足りません"
       redirect_to "/furikomi/input_kingaku"
     else
       # 振込元口座から引き落とし
-      @moto_kouza.update(zandaka: zandaka - @kingaku)
+      @moto_kouza.update(zandaka: @moto_kouza.zandaka - @kingaku)
       @moto_kouza.meisai.create(
         kubun: :syukkin,
         kingaku: @kingaku,
-        zandaka: zandaka - @kingaku,
+        zandaka: @moto_kouza.zandaka - @kingaku,
         tekiyou: "#{@saki_kouza.user.kanji_name}への振込",
       )
 
@@ -93,10 +92,10 @@ class FurikomiController < ApplicationController
         @moto_kouza.meisai.create(
           kubun: :syukkin,
           kingaku: -@moto_kouza.zandaka / 20,
-          zandaka: @moto_kouza.zandaka * 19 / 20,
+          zandaka: @moto_kouza.zandaka * 21 / 20,
           tekiyou: "貸越利息",
         )
-        @moto_kouza.update(zandaka: @moto_kouza.zandaka * 19 / 20)
+        @moto_kouza.update(zandaka: @moto_kouza.zandaka * 21 / 20)
       end
 
       # 振込先口座に入金
@@ -108,6 +107,7 @@ class FurikomiController < ApplicationController
         tekiyou: "#{@moto_kouza.user.kanji_name}からの振込",
       )
 
+      flash[:notice] = "振込を受け付けました"
       redirect_to "/furikomi/kekka"
     end
   end
