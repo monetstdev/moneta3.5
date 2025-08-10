@@ -33,4 +33,5 @@ ENV RAILS_ENV=production \
     RAILS_LOG_TO_STDOUT=true
 
 # Puma をデフォルトサーバーとして起動
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+# CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+CMD mkdir -p tmp/pids && bundle exec puma -C config/puma.rb
