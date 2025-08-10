@@ -10,6 +10,7 @@ RUN apt-get update -qq && \
       npm \
       curl \
       git && \
+    npm install --global yarn && \
     rm -rf /var/lib/apt/lists/*
 
 # 作業ディレクトリ
@@ -22,8 +23,9 @@ RUN gem install bundler && bundle install --without development test
 # アプリケーション全体をコピー
 COPY . .
 
-# 本番用にアセットをプリコンパイル
-RUN RAILS_ENV=production bundle exec rails assets:precompile
+# SECRET_KEY_BASE を一時生成してプリコンパイル
+RUN SECRET_KEY_BASE=dummy RAILS_ENV=production \
+    bundle exec rails assets:precompile
 
 # 環境変数
 ENV RAILS_ENV=production \
