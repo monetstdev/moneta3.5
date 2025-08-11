@@ -1,5 +1,5 @@
 # デモ
-https://moneta3-5.onrender.com
+https://moneta3-5-rails.onrender.com/
 
 # 改修の目的
 - 初学者を想定し期間が短いことから、バッドプラクティスであってもコードの追いやすさ、理解しやすさを重視
